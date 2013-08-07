@@ -2,17 +2,17 @@
    html
    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
    [
-   <!ENTITY disconnect "disconnect">
+   <!ENTITY disconnect "Disconnect">
    <!ENTITY showDeviceInspector "Click for more details">
    <!ENTITY notConnected "Not connected">
-   <!ENTITY changeIPAndPort "change">
-   <!ENTITY startSimulator "start simulator">
-   <!ENTITY saveConnectionInfo "save">
-   <!ENTITY connecting "connecting…">
-   <!ENTITY cancel "cancel">
-   <!ENTITY screenshot "screenshot">
-   <!ENTITY killall "killall">
-   <!ENTITY reboot "reboot">
+   <!ENTITY changeIPAndPort "Change">
+   <!ENTITY startSimulator "Start Simulator">
+   <!ENTITY saveConnectionInfo "Save">
+   <!ENTITY connecting "Connecting…">
+   <!ENTITY cancel "Cancel">
+   <!ENTITY screenshot "Screenshot">
+   <!ENTITY killall "Killall">
+   <!ENTITY reboot "Reboot">
    <!ENTITY charging "(charging)">
    <!ENTITY discharging "(discharging)">
    ]
@@ -35,8 +35,8 @@
         <div id="banner-connected" class="banner">
           <div id="status" class="banner-box">
             <div class="banner-content">
-              <p template='{"type":"localizedContent","property":"connectedToDevice","paths":["client.meta.deviceName"]}'></p>
-              <p><a href="#" onclick="UI.disconnect()">&disconnect;</a></p>
+              <p class="connected-status" template='{"type":"localizedContent","property":"connectedToDevice","paths":["client.meta.deviceName"]}'></p>
+              <p><button class="action-cancel" href="#" onclick="UI.disconnect()">&disconnect;</button></p>
             </div>
           </div>
           <div id="summary" class="banner-box">
@@ -56,8 +56,8 @@
         <div id="banner-disconnected" class="banner">
           <div class="banner-box">
             <div class="banner-content">
-              <p>&notConnected;</p>
-              <p><button onclick="UI.connect()" template='{"type":"localizedContent","property":"connectTo","paths":["client.connection.ip","client.connection.port"]}'></button>
+              <p class="connected-status error">&notConnected;</p>
+              <p><button onclick="UI.connect()" class="action-primary" template='{"type":"localizedContent","property":"connectTo","paths":["client.connection.ip","client.connection.port"]}'></button>
               <a href="#" onclick="UI.editConnectionParameters()">&changeIPAndPort;</a></p>
               <p><button>&startSimulator;</button></p>
             </div>
@@ -79,20 +79,25 @@
         <div id="banner-connecting" class="banner">
           <div id="status" class="banner-box">
             <div class="banner-content">
-              <p>&connecting;</p>
+              <p class="connected-status progress">&connecting;</p>
+              <p><button onClick="UI.disconnect()" class="action-cancel">&cancel;</button></p>
               <p>
-              <button onclick="UI.disconnect()">&cancel;</button>
+              <!--<button onclick="UI.disconnect()">&cancel;</button>-->
               </p>
             </div>
           </div>
         </div>
 
-        <div id="logs">
-          <pre>opening tcp socket (address: xxxx, port: xxxx)
-initializing connection...  timeout(30s)
-opening tcp socket (address: xxxx, port: xxxx)
-initializing connection...  success
-connected</pre>
+        <div id="banner-logs">
+          <div id="logs" class="banner-box">
+            <pre>
+  opening tcp socket (address: xxxx, port: xxxx)
+  initializing connection...  timeout(30s)
+  opening tcp socket (address: xxxx, port: xxxx)
+  initializing connection...  success
+  <b>connected</b>
+            </pre>
+          </div>
         </div>
 
       </div>

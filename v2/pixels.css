@@ -6,7 +6,7 @@
 
 body {
   color: #333;
-  background-color: white;
+  background-color: #EEE;
 }
 
 body, tbody {
@@ -16,15 +16,35 @@ body, tbody {
 }
 
 a {
-  color: #000!important;
+  color: #EEE;
   text-decoration: none;
   border-bottom: 1px dotted #999
+  text-shadow: 0px 0px 3px #111;
+}
+
+p {
+    padding-bottom: 5px;
 }
 
 button {
-  background: #EEE;
-  border: 1px solid #999;
+  background: linear-gradient(to bottom, #49535C, #394148);
+  box-shadow: 0px 1px 1px #3C444D, inset 0 1px 0px rgba(255,255,255,0.1);
+  color: #9FA6AD;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.6);
+  border: 1px solid #111;
   cursor: pointer;
+  border-radius: 3px;
+  padding: 3px 10px;
+}
+
+button.action-primary {
+    background: linear-gradient(to bottom, #9ebc23, #849E1B);
+    color: #FFF;
+}
+button.action-cancel {
+    background: linear-gradient(to bottom, #e24631, #a50d0d);
+    color: #FFF;
 }
 
 hr {
@@ -34,25 +54,34 @@ hr {
 }
 
 #banners-and-logs {
-  border: solid #CCC;
+  border: solid #111;
+  box-shadow: inset 0 0 1px #424A51, 0 -1px 5px rgba(0,0,0,0.3);
   border-width: 1px 0;
+  background: linear-gradient(to bottom, #323A42, #29313A);
+  color: #A8BABF;
+  font-weight: bold;
+}
+#logs > pre {
+  border: 1px solid #111;
+  box-shadow: 0px 1px 1px #49525A;
+  font-size: 10px;
+  background: #121314;
+  padding: 5px;
+  height: 100%;
 }
 
-#logs > pre {
-  border: 1px solid #DDD;
-  border-radius: 3px;
-  font-size: 10px;
-  background: white;
-  padding: 5px;
-  margin: 10px 20px;
+#logs > pre b {
+    color: #70C4FF;
 }
 
 .banner-box {
-  background-image: linear-gradient(to bottom, transparent, #AAA, transparent);
+  box-shadow: inset 0 0 1px #667480;
+  border-right: 1px solid #111;
   background-position: center right;
-  background-size: 1px 80%;
+  background-size: 1px 100%;
   background-repeat: no-repeat;
   padding: 10px 20px;
+  position: relative;
 }
 
 #collapsable-content {
@@ -139,4 +168,28 @@ hr {
 
 .app {
   border-top: 1px solid #CCC;
+}
+
+.connected-status {
+    color: #B3BFC9;
+    text-shadow: 0px 1px 0px rgba(0,0,0,0.3);
+    padding-bottom: 10px;
+}
+
+.connected-status:before{
+    content: '';
+    height: 9px;
+    width: 9px;
+    border-radius: 5px;
+    margin-right: 4px;
+    background-color: #AFFF24;
+    box-shadow: inset 0 -2px 3px rgba(0,0,0,0.3), 0px -1px 1px rgba(0,0,0,0.3);
+    display: inline-block;
+}
+
+.connected-status.error:before {
+    background-color: #FF4000;
+}
+.connected-status.progress:before {
+    background-color: #FFD000;
 }
